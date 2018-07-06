@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="daily attendance" language="groovy" pageWidth="841" pageHeight="842" columnWidth="801" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0fde346-f417-4d4a-b53f-fde7f611f1d6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/shirow/NetBeansProjects/FaceAttendancesys/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT attendance_id,student.registration_number,student.firstname,student.lastname FROM attendance INNER JOIN class ON attendance.class_id = class.class_id INNER JOIN student ON attendance.student_id = student.student_id INNER JOIN courses ON class.course_id = courses.course_id;]]>
+	</queryString>
+	<field name="attendance_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="registration_number" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="firstname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lastname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="620" height="92" backcolor="#006699" uuid="5a35f2bf-2263-4597-a677-13f55c3103ba"/>
+				<staticText>
+					<reportElement x="0" y="25" width="620" height="43" forecolor="#FFFFFF" uuid="49a3db3f-4ed8-47b1-b35a-17135c3b34ba"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Daily attendance report]]></text>
+				</staticText>
+			</frame>
+			<image>
+				<reportElement x="600" y="-20" width="143" height="92" uuid="14ccd4a9-ca26-41f8-9aad-0d042247f8c3"/>
+				<imageExpression><![CDATA["/home/shirow/NetBeansProjects/FaceAttendancesys/src/images/logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="3"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="44">
+			<staticText>
+				<reportElement mode="Opaque" x="21" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9606833c-7d8f-48db-9418-a5e467bf5e70"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[registration_number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="233" y="0" width="137" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="21a5f112-50e5-4714-8d06-1f3e41e53a99"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[firstname]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="394" y="0" width="161" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ed93747e-c1fe-40a8-9d57-0895e3c3ab5d"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[lastname]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="100" y="30" width="346" height="14" uuid="0ad1d50f-83a0-4930-b02e-acede71935e9"/>
+				<subreportParameter name="attendance_id">
+					<subreportParameterExpression><![CDATA[$F{attendance_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "attendancedetails.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="21" y="12" width="185" height="20" uuid="9d5e4623-c2f4-45cd-88b7-e532d40e4397"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_number}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="257" y="12" width="137" height="20" uuid="9895acbc-495a-45eb-8245-1dc3b76af0de"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{firstname}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="425" y="12" width="185" height="20" uuid="c054f72b-4526-49c9-b059-9efe5849fc16"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lastname}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="26">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="a3c4b5b5-203f-4493-a3ad-1e1fec2232fb"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="9b8f2c13-8637-4586-82c3-7d9696000aba"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="8dcf52e3-4e34-4ded-a66e-b871cdf8c2fc"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

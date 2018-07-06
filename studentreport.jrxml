@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="studentreport" language="groovy" pageWidth="850" pageHeight="800" orientation="Landscape" columnWidth="810" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f55d0d86-94fe-493c-84f5-90c56371900c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT attendance.attendance_id,attendance.attendance_date,attendance.verification,admin.admin_name,courses.course_name,courses.course_code,degrees.degree_name FROM attendance INNER JOIN class ON attendance.class_id = class.class_id INNER JOIN admin ON class.admin_id = admin.admin_id INNER JOIN courses ON class.course_id = courses.course_id INNER JOIN degrees ON class.degree_id = degrees.degree_id;
+]]>
+	</queryString>
+	<field name="attendance_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="attendance_date" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="verification" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="admin_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="course_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="course_code" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="degree_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="attendance_id_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{attendance_id}]]></variableExpression>
+	</variable>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-10" y="-20" width="791" height="92" backcolor="#006699" uuid="917e4545-6478-448c-af28-69178cf8c561"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="ef6316c3-16b2-4bd0-b35b-c05ae25dcd13"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[REPORT]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="356" y="28" width="323" height="36" forecolor="#FFFFFF" uuid="65ba866d-773b-40a7-b964-09e6a4ff4d3f">
+						<property name="net.sf.jasperreports.export.pdf.tag.th" value="full"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[INDIVIDUAL ATTENDANCE REPORT]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="7"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="43">
+			<line>
+				<reportElement x="-20" y="20" width="801" height="1" forecolor="#666666" uuid="1aabd07b-b2cc-4360-be53-c48792d2823a"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="21" width="100" height="20" uuid="13af59d6-87ae-445d-9a1e-08abf6c13c7c"/>
+				<text><![CDATA[attendance_id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="20" width="100" height="20" uuid="d2c28315-f609-4a0c-a1b1-349cb1f460a9"/>
+				<text><![CDATA[attendance_date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="21" width="83" height="20" uuid="34ae2002-a26e-4c30-8ccc-8f95da542110"/>
+				<text><![CDATA[verification]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="569" y="23" width="100" height="20" uuid="b469604a-46a4-43d0-9717-97ad556b38cc"/>
+				<text><![CDATA[degree_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="681" y="23" width="100" height="20" uuid="ce9c7142-82ce-43ea-a772-e97a2aca8cca"/>
+				<text><![CDATA[admin_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="454" y="21" width="100" height="20" uuid="ec7ac87e-3e62-4f3c-9f41-8fbeb890fc7f"/>
+				<text><![CDATA[course_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="21" width="80" height="20" uuid="7c4f610f-c1cb-4117-b523-212c8d68c79d"/>
+				<text><![CDATA[course_code]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-20" y="0" width="801" height="1" uuid="03e2601f-871b-4a36-ac81-854109889dfc"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="9" width="100" height="20" uuid="4348b0e0-2151-4cb0-8ab0-f30f02c258b7"/>
+				<textFieldExpression><![CDATA[$F{attendance_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="9" width="100" height="20" uuid="eee58c3b-e4f8-4507-807b-30c20c2aaefd"/>
+				<textFieldExpression><![CDATA[$F{attendance_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="274" y="9" width="32" height="20" uuid="bc165bee-3bea-41cc-bb24-55fd8906fbb2"/>
+				<textFieldExpression><![CDATA[$F{verification}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="454" y="9" width="100" height="20" uuid="0cf505a6-e432-42f8-99f5-0ce7ac8050aa"/>
+				<textFieldExpression><![CDATA[$F{course_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="569" y="9" width="100" height="20" uuid="d6ea5def-7c0c-421a-bd42-0d6cc1f0edf0"/>
+				<textFieldExpression><![CDATA[$F{degree_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="681" y="9" width="100" height="20" uuid="44466603-ee17-4bb7-95cc-bf9e41b055bc"/>
+				<textFieldExpression><![CDATA[$F{admin_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="346" y="9" width="80" height="20" uuid="90509d20-c38e-49fb-8e56-c54fef327ac4"/>
+				<textFieldExpression><![CDATA[$F{course_code}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="229">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="370" height="13" backcolor="#E6E6E6" uuid="23f01fb7-6174-42bc-ae3a-6f1acb598a91"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="510" y="4" width="246" height="13" backcolor="#E6E6E6" uuid="d89d7d85-5c58-4e25-8ea6-74d0024917f5"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="0d10f5d7-050f-4606-99cd-74fb843e7e82"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

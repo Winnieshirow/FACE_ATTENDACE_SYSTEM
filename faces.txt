@@ -1,0 +1,4 @@
+/home/shirow/NetBeansProjects/FaceAttendancesys/facesdatabase/njogu.bmp
+/home/shirow/NetBeansProjects/FaceAttendancesys/facesdatabase/njogu1.bmp
+/home/shirow/NetBeansProjects/FaceAttendancesys/facesdatabase/njogu2.bmp
+/home/shirow/NetBeansProjects/FaceAttendancesys/facesdatabase/njogu3.bmp
